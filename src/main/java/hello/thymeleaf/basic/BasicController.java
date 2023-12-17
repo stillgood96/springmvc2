@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Array;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -89,6 +90,11 @@ public class BasicController {
     }
   }
 
+  @RequestMapping("/date")
+  public String date(Model model) {
+    model.addAttribute("localDateTime", LocalDateTime.now());
+    return "basic/date";
+  }
 
 
 }
