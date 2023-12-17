@@ -122,14 +122,13 @@ public class BasicController {
     return "basic/comments";
   }
 
-  private void addUsers(Model model) {
-    List<User> list = new ArrayList<>();
-    list.add(new User("userA", 10));
-    list.add(new User("userB", 20));
-    list.add(new User("userC", 30));
-
-    model.addAttribute("users", list);
+  @GetMapping("/block")
+  public String block(Model model) {
+    addUsers(model);
+    return "basic/block";
   }
+
+
 
   @Component("helloBean")
   static class HelloBean {
@@ -148,6 +147,15 @@ public class BasicController {
       this.username = username;
       this.age = age;
     }
+  }
+
+  private void addUsers(Model model) {
+    List<User> list = new ArrayList<>();
+    list.add(new User("userA", 10));
+    list.add(new User("userB", 20));
+    list.add(new User("userC", 30));
+
+    model.addAttribute("users", list);
   }
 
 }
