@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -94,6 +95,13 @@ public class BasicController {
   public String date(Model model) {
     model.addAttribute("localDateTime", LocalDateTime.now());
     return "basic/date";
+  }
+
+  @RequestMapping("link")
+  public String link(Model model) {
+    model.addAttribute("param1", "data1");
+    model.addAttribute("param2", "data2");
+    return "basic/link";
   }
 
 
