@@ -72,25 +72,6 @@ public class BasicController {
     return "basic/basic-objects";
   }
 
-  @Component("helloBean")
-  static class HelloBean {
-    public String hello(String data) {
-      return "Hello " + data;
-    }
-  }
-
-  @Data
-  static class User {
-
-    private String username;
-    private int age;
-
-    public User(String username, int age) {
-      this.username = username;
-      this.age = age;
-    }
-  }
-
   @RequestMapping("/date")
   public String date(Model model) {
     model.addAttribute("localDateTime", LocalDateTime.now());
@@ -129,6 +110,12 @@ public class BasicController {
     return "basic/each";
   }
 
+  @GetMapping("/condition")
+  public String condition(Model model) {
+    addUsers(model);
+    return "basic/condition";
+  }
+
   private void addUsers(Model model) {
     List<User> list = new ArrayList<>();
     list.add(new User("userA", 10));
@@ -138,5 +125,23 @@ public class BasicController {
     model.addAttribute("users", list);
   }
 
+  @Component("helloBean")
+  static class HelloBean {
+    public String hello(String data) {
+      return "Hello " + data;
+    }
+  }
+
+  @Data
+  static class User {
+
+    private String username;
+    private int age;
+
+    public User(String username, int age) {
+      this.username = username;
+      this.age = age;
+    }
+  }
 
 }
